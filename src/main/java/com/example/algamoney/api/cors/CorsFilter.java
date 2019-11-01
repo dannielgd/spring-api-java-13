@@ -17,16 +17,16 @@ import org.springframework.stereotype.Component;
 
 import com.example.algamoney.api.config.property.AlgamoneyApiProperty;
 
-@Component
-@Order(Ordered.HIGHEST_PRECEDENCE)
-public class CorsFilter implements Filter{
+//@Component
+//@Order(Ordered.HIGHEST_PRECEDENCE)
+public class CorsFilter {// implements Filter{
 	
-	@Autowired
+//	@Autowired
 	private AlgamoneyApiProperty algamoneyApiProperty;
 	
 	//private String originPermitida = algamoneyApiProperty.getOriginPermitida(); //TODO: Configurar para diferentes ambientes
 	
-	@Override
+//	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 		
