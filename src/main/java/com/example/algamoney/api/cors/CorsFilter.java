@@ -17,21 +17,24 @@ import org.springframework.stereotype.Component;
 
 import com.example.algamoney.api.config.property.AlgamoneyApiProperty;
 
-//@Component
-//@Order(Ordered.HIGHEST_PRECEDENCE)
-public class CorsFilter {// implements Filter{
+@Component
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class CorsFilter implements Filter{
 	
-//	@Autowired
+	@Autowired
 	private AlgamoneyApiProperty algamoneyApiProperty;
 	
 	//private String originPermitida = algamoneyApiProperty.getOriginPermitida(); //TODO: Configurar para diferentes ambientes
 	
-//	@Override
+	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 		
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
+
+		System.out.println("HTTPS " + algamoneyApiProperty.getSeguranca().isEnableHttps());
+		System.out.println("Origem " + algamoneyApiProperty.getOriginPermitida());
 		
 		response.setHeader("Access-Control-Allow-Origin", algamoneyApiProperty.getOriginPermitida()); //permitir a origem
 		response.setHeader("Access-Control-Allow-Credentials", "true"); //para permitir o cookie
